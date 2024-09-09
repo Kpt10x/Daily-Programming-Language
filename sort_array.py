@@ -1,4 +1,4 @@
-def sort1(arr):
+def sort(arr):
     low = 0
     mid = 0
     high = len(arr) - 1
@@ -16,5 +16,5 @@ def sort1(arr):
     return arr
 
 arr = [0, 1, 2, 1, 0, 2, 1, 0]
-sorted_arr = sort1(arr)
+sorted_arr = sort(arr)
 print(sorted_arr)
