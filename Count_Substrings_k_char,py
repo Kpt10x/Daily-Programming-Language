@@ -1,0 +1,32 @@
+from collections import defaultdict
+def kpt10x(s, k):
+    left = 0
+    count = 0
+    freq_map = defaultdict(int)
+    
+    for right in range(len(s)):
+        freq_map[s[right]] += 1
+        
+        while len(freq_map) > k:
+            freq_map[s[left]] -= 1
+            if freq_map[s[left]] == 0:
+                del freq_map[s[left]]  
+            left += 1
+        
+        count += right - left + 1
+    
+    return count
+
+def kpt100x(s, k):
+    at_most_k = kpt10x(s, k)
+    
+    at_most_k_minus_1 = kpt10x(s, k - 1)
+    
+    return at_most_k - at_most_k_minus_1
+
+# Test cases
+print(kpt100x("pqpqs", 2))  
+print(kpt100x("aabacbebebe", 3))  
+print(kpt100x("a", 1))  
+print(kpt100x("abc", 3))  
+print(kpt100x("abc", 2))  
